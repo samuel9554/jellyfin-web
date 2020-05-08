@@ -158,9 +158,9 @@ define(['browser', 'datetime', 'backdrop', 'libraryBrowser', 'listView', 'imageL
             }
 
             var url = item ? seriesImageUrl(item, {
-                maxHeight: 300 * 2
+                maxHeight: 600 * 2
             }) || imageUrl(item, {
-                maxHeight: 300 * 2
+                maxHeight: 600 * 2
             }) : null;
 
             console.debug('updateNowPlayingInfo');
@@ -185,9 +185,15 @@ define(['browser', 'datetime', 'backdrop', 'libraryBrowser', 'listView', 'imageL
         currentImgUrl = url;
         var item = state.NowPlayingItem;
         var imgContainer = context.querySelector('.nowPlayingPageImageContainer');
+        document.querySelector('.nowPlayingItemBackdrop').removeAttribute('style');
+
+        if (layoutManager.mobile) {
+            document.querySelector('.nowPlayingItemBackdrop').classList.add('hide');
+        }
 
         if (url) {
             imgContainer.innerHTML = '<img class="nowPlayingPageImage" src="' + url + '" />';
+            document.querySelector('.nowPlayingItemBackdrop').style.backgroundImage = "url('" + url + "')";
             if (item.Type == 'Audio') {
                 context.querySelector('.nowPlayingPageImage').classList.add('nowPlayingPageImageAudio');
                 context.querySelector('.nowPlayingPageImageContainer').classList.remove('nowPlayingPageImageAudio');
@@ -453,9 +459,17 @@ define(['browser', 'datetime', 'backdrop', 'libraryBrowser', 'listView', 'imageL
                 }
 
                 imageLoader.lazyChildren(itemsContainer);
-                context.querySelector('.playlist').classList.add('hide');
+
+                if (layoutManager.mobile) {
+                    context.querySelector('.playlist').classList.add('hide');
+                    context.querySelector('.btnSavePlaylist').classList.add('hide');
+                } else {
+                    context.querySelector('.playlist').classList.remove('hide');
+                    context.querySelector('.btnSavePlaylist').classList.remove('hide');
+                    context.querySelector('.playlistSectionButton').classList.add('hide');
+                }
+
                 context.querySelector('.contextMenu').classList.add('hide');
-                context.querySelector('.btnSavePlaylist').classList.add('hide');
             });
         }
 

@@ -1,5 +1,5 @@
 .nowPlayingPage {
-    padding: 5em 0 0 0 !important;
+    padding: 0;
 }
 
 .nowPlayingInfoContainer {
@@ -85,7 +85,7 @@
 }
 
 .nowPlayingPageImageContainer {
-    width: 16%;
+    width: 25vw;
     margin-right: 1em;
     position: relative;
     -webkit-flex-shrink: 0;
@@ -171,9 +171,47 @@
     z-index: 0;
 }
 
+.nowPlayingItemBackdrop {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    height: 50vh;
+    position: relative;
+}
+
+.nowPlayingItemBackdrop::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    display: block;
+}
+
 @media all and (min-width: 63em) {
-    .nowPlayingPage {
-        padding: 8em 0 0 0 !important;
+    .remoteControlContent {
+        margin-top: -23vh;
+    }
+
+    .nowPlayingInfoControls {
+        margin: auto;
+        position: absolute;
+        bottom: 50vh;
+        left: 0;
+        right: 0;
+        padding: 1em 3.3% 1em 32.45vw;
+    }
+
+    .playlistSection {
+        position: absolute;
+        top: calc(50vh + 1vh);
+        left: 0;
+        right: 0;
+        padding: 1em 3.3% 1em 32.45vw;
+    }
+
+    .nowPlayingPageImageContainer {
+        z-index: 1;
     }
 
     .nowPlayingSecondaryButtons {
@@ -194,6 +232,10 @@
     .nowPlayingContextMenu {
         background: unset !important;
     }
+
+    .remoteControlSection {
+        width: 25vw;
+    }
 }
 
 @media all and (min-width: 80em) {
@@ -209,6 +251,7 @@
         display: flex;
         height: 100%;
         flex-direction: column;
+        padding-top: 5em;
     }
 
     .nowPlayingInfoContainer {
@@ -269,6 +312,7 @@
         -webkit-box-pack: start !important;
         -webkit-justify-content: start !important;
         justify-content: start !important;
+        background: unset !important;
     }
 
     .nowPlayingSecondaryButtons {
@@ -419,6 +463,7 @@
         display: flex;
         height: 100%;
         flex-direction: column;
+        padding-top: 5em;
     }
 
     .nowPlayingInfoContainer {
@@ -472,6 +517,7 @@
         -webkit-box-pack: start !important;
         -webkit-justify-content: start !important;
         justify-content: start !important;
+        background: unset !important;
     }
 
     .nowPlayingSecondaryButtons {
