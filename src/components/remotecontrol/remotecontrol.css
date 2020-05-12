@@ -388,7 +388,7 @@
 
     #nowPlayingPage .playlistSection .playlist,
     #nowPlayingPage .playlistSection .contextMenu {
-        position: absolute;
+        position: fixed;
         top: 12.2em;
         bottom: 4.2em;
         overflow: scroll;
@@ -580,7 +580,7 @@
 
     #nowPlayingPage .playlistSection .playlist,
     #nowPlayingPage .playlistSection .contextMenu {
-        position: absolute;
+        position: fixed;
         top: 7.2em;
         bottom: 4.2em;
         overflow: scroll;
